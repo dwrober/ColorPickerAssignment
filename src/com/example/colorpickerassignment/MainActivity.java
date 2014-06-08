@@ -1,7 +1,6 @@
 package com.example.colorpickerassignment;
 
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.NumberPicker;
-import android.os.Build;
 
 public class MainActivity extends ActionBarActivity {
 

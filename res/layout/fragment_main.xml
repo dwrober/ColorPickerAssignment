@@ -31,7 +31,7 @@
 				    android:id="@+id/textView1"
 				    android:layout_width="wrap_content"
 				    android:layout_height="wrap_content"
-				    android:text="Red"
+				    android:text="@string/Red"
 				    android:textAppearance="?android:attr/textAppearanceMedium" />
 				<NumberPicker
 	                android:id="@+id/red"
@@ -48,7 +48,7 @@
 				    android:id="@+id/textGreen"
 				    android:layout_width="wrap_content"
 				    android:layout_height="wrap_content"
-				    android:text="Green"
+				    android:text="@string/Green"
 				    android:textAppearance="?android:attr/textAppearanceMedium" />
 	
 	            <NumberPicker
@@ -65,7 +65,7 @@
 				    android:id="@+id/textBlue"
 				    android:layout_width="wrap_content"
 				    android:layout_height="wrap_content"
-				    android:text="Blue"
+				    android:text="@string/Blue"
 				    android:textAppearance="?android:attr/textAppearanceMedium" />
 	            <NumberPicker
 	                android:id="@+id/blue"
