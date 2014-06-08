@@ -9,19 +9,45 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.NumberPicker;
 import android.os.Build;
 
 public class MainActivity extends ActionBarActivity {
 
+	private int MAX = 255;
+	private int MIN = 0;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
+		
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+	}
+	
+	private void setupNumberPickers() {
+		final String[] nums = new String[256];
+		for(int i=0; i<nums.length; i++) {
+		   nums[i] = Integer.toString(i);
+		}
+		
+		final NumberPicker redPicker = (NumberPicker) findViewById(R.id.red);
+		final NumberPicker greenPicker = (NumberPicker) findViewById(R.id.green);
+		final NumberPicker bluePicker = (NumberPicker) findViewById(R.id.blue);
+
+		setupPicker(redPicker, nums);
+		setupPicker(greenPicker, nums);
+		setupPicker(bluePicker, nums);
+	}
+	
+	private void setupPicker(NumberPicker np, String[] nums) {
+		np.setMaxValue(MAX);
+		np.setMinValue(0);
+		np.setWrapSelectorWheel(true);
+		np.setDisplayedValues(nums);
 	}
 
 	@Override
@@ -29,6 +55,7 @@ public class MainActivity extends ActionBarActivity {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
+		setupNumberPickers();
 		return true;
 	}
 
