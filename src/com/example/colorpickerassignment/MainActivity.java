@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +17,10 @@ public class MainActivity extends ActionBarActivity {
 
 	private int MAX = 255;
 	private int MIN = 0;
+	
+	private NumberPicker redPicker;
+	private NumberPicker greenPicker;
+	private NumberPicker bluePicker;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +39,41 @@ public class MainActivity extends ActionBarActivity {
 		   nums[i] = Integer.toString(i);
 		}
 		
-		final NumberPicker redPicker = (NumberPicker) findViewById(R.id.red);
-		final NumberPicker greenPicker = (NumberPicker) findViewById(R.id.green);
-		final NumberPicker bluePicker = (NumberPicker) findViewById(R.id.blue);
+		redPicker = (NumberPicker) findViewById(R.id.red);
+		greenPicker = (NumberPicker) findViewById(R.id.green);
+		bluePicker = (NumberPicker) findViewById(R.id.blue);
 
 		setupPicker(redPicker, nums);
 		setupPicker(greenPicker, nums);
 		setupPicker(bluePicker, nums);
+		
+		addRedListeners();
+	}
+	
+	private void addRedListeners() {
+		redPicker.setOnValueChangedListener( new NumberPicker.
+	            OnValueChangeListener() {
+	            @Override
+	            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+	            	Log.i("RedChange", "From: " + Integer.toString(oldVal) + " to newVal: " + Integer.toString(newVal));
+	            }
+	        });
+		
+		greenPicker.setOnValueChangedListener( new NumberPicker.
+	            OnValueChangeListener() {
+	            @Override
+	            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+	            	Log.i("GreenChange", "From: " + Integer.toString(oldVal) + " to newVal: " + Integer.toString(newVal));
+	            }
+	        });
+		
+		bluePicker.setOnValueChangedListener( new NumberPicker.
+	            OnValueChangeListener() {
+	            @Override
+	            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+	            	Log.i("BlueChange", "From: " + Integer.toString(oldVal) + " to newVal: " + Integer.toString(newVal));
+	            }
+	        });
 	}
 	
 	private void setupPicker(NumberPicker np, String[] nums) {
