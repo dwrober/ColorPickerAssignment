@@ -3,6 +3,7 @@ package com.example.colorpickerassignment;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.NumberPicker;
 import android.os.Build;
 
@@ -21,6 +23,7 @@ public class MainActivity extends ActionBarActivity {
 	private NumberPicker redPicker;
 	private NumberPicker greenPicker;
 	private NumberPicker bluePicker;
+	private FrameLayout colorFrame;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,7 @@ public class MainActivity extends ActionBarActivity {
 		redPicker = (NumberPicker) findViewById(R.id.red);
 		greenPicker = (NumberPicker) findViewById(R.id.green);
 		bluePicker = (NumberPicker) findViewById(R.id.blue);
+		colorFrame = (FrameLayout) findViewById(R.id.color);
 
 		setupPicker(redPicker, nums);
 		setupPicker(greenPicker, nums);
@@ -56,6 +60,7 @@ public class MainActivity extends ActionBarActivity {
 	            @Override
 	            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
 	            	Log.i("RedChange", "From: " + Integer.toString(oldVal) + " to newVal: " + Integer.toString(newVal));
+	            	setColor(redPicker.getValue(), greenPicker.getValue(), bluePicker.getValue());
 	            }
 	        });
 		
@@ -64,6 +69,7 @@ public class MainActivity extends ActionBarActivity {
 	            @Override
 	            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
 	            	Log.i("GreenChange", "From: " + Integer.toString(oldVal) + " to newVal: " + Integer.toString(newVal));
+	            	setColor(redPicker.getValue(), greenPicker.getValue(), bluePicker.getValue());
 	            }
 	        });
 		
@@ -72,15 +78,21 @@ public class MainActivity extends ActionBarActivity {
 	            @Override
 	            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
 	            	Log.i("BlueChange", "From: " + Integer.toString(oldVal) + " to newVal: " + Integer.toString(newVal));
+	            	setColor(redPicker.getValue(), greenPicker.getValue(), bluePicker.getValue());
 	            }
 	        });
 	}
 	
 	private void setupPicker(NumberPicker np, String[] nums) {
 		np.setMaxValue(MAX);
-		np.setMinValue(0);
+		np.setMinValue(MIN);
 		np.setWrapSelectorWheel(true);
 		np.setDisplayedValues(nums);
+	}
+	
+	private void setColor(int red, int green, int blue) {
+		Log.i("SettingColor", "Red: " + Integer.toString(red) + " Green: " + Integer.toString(green) + " Blue: " + Integer.toString(blue));
+		colorFrame.setBackgroundColor(Color.rgb(red, green, blue));
 	}
 
 	@Override
