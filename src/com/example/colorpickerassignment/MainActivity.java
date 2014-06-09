@@ -50,6 +50,7 @@ public class MainActivity extends ActionBarActivity {
 		setupPicker(bluePicker, nums);
 		
 		addRedListeners();
+		setColor(redPicker.getValue(), greenPicker.getValue(), bluePicker.getValue());
 	}
 	
 	private void addRedListeners() {
