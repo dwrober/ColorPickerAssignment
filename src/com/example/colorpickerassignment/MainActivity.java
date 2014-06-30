@@ -75,12 +75,9 @@ public class MainActivity extends ActionBarActivity {
             			+ "Blue(" + Integer.toString(bluePicker.getValue()) + ")");
             	
             	
-            	Bundle colorInfo = new Bundle();
-            	colorInfo.putInt("red", redPicker.getValue());
-            	colorInfo.putInt("green", 0);
-            	colorInfo.putInt("blue", 10);
-            	intent.putExtras(colorInfo);
-            	setResult(RESULT_OK, intent);
+            	Intent result = new Intent("msud.cs390H.ACTION_COLOR");
+            	result.putExtra("result","test");
+            	setResult(RESULT_OK, result);
             	finish();
             }
         });
