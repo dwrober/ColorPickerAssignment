@@ -21,6 +21,8 @@ public class MainActivity extends ActionBarActivity {
 	private int MAX = 255;
 	private int MIN = 0;
 	
+	private Intent intent;
+	
 	private NumberPicker redPicker;
 	private NumberPicker greenPicker;
 	private NumberPicker bluePicker;
@@ -36,7 +38,7 @@ public class MainActivity extends ActionBarActivity {
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
 		
-		Intent intent = getIntent();
+		intent = getIntent();
 		Bundle info = intent.getExtras();
 		if (info != null) {
 			Log.i("intent", "info object has values");
@@ -73,6 +75,13 @@ public class MainActivity extends ActionBarActivity {
             			+ "Blue(" + Integer.toString(bluePicker.getValue()) + ")");
             	
             	
+            	Bundle colorInfo = new Bundle();
+            	colorInfo.putInt("red", redPicker.getValue());
+            	colorInfo.putInt("green", 0);
+            	colorInfo.putInt("blue", 10);
+            	intent.putExtras(colorInfo);
+            	setResult(RESULT_OK, intent);
+            	finish();
             }
         });
 	}
