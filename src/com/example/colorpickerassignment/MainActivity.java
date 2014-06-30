@@ -76,7 +76,11 @@ public class MainActivity extends ActionBarActivity {
             	
             	
             	Intent result = new Intent("msud.cs390H.ACTION_COLOR");
-            	result.putExtra("result","test");
+            	int[] values = {redPicker.getValue(),
+            					greenPicker.getValue(),
+            					bluePicker.getValue()}; 
+            	
+            	result.putExtra("colorArray",values);
             	setResult(RESULT_OK, result);
             	finish();
             }
