@@ -1,5 +1,6 @@
 package com.example.colorpickerassignment;
 
+
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.NumberPicker;
 
@@ -36,8 +38,8 @@ public class MainActivity extends ActionBarActivity {
 		
 		Intent intent = getIntent();
 		Bundle info = intent.getExtras();
-		if (info != null) { 
-			/* Retrieve vals with info.getBlah(...) */ 
+		if (info != null) {
+			Log.i("intent", "info object has values");
 		} 
 
 	}
@@ -59,6 +61,20 @@ public class MainActivity extends ActionBarActivity {
 		
 		addRedListeners();
 		setColor(redPicker.getValue(), greenPicker.getValue(), bluePicker.getValue());
+	}
+	
+	private void setupButtonListener() {
+		final Button colorBtn = (Button) findViewById(R.id.colorBtn);
+		colorBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            	Log.i("button_clicked","Colors Selected, "
+            			+ "Red(" + Integer.toString(redPicker.getValue()) + ")"
+            			+ "Green(" + Integer.toString(greenPicker.getValue()) + ")"
+            			+ "Blue(" + Integer.toString(bluePicker.getValue()) + ")");
+            	
+            	
+            }
+        });
 	}
 	
 	private void addRedListeners() {
@@ -108,6 +124,7 @@ public class MainActivity extends ActionBarActivity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		setupNumberPickers();
+		setupButtonListener();
 		return true;
 	}
 
