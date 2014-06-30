@@ -21,6 +21,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+			    <action android:name="msud.cs390H.ACTION_COLOR"/>
+			    <category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
         </activity>
     </application>
 

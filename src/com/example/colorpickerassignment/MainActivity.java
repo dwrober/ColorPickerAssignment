@@ -2,6 +2,7 @@ package com.example.colorpickerassignment;
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,6 +33,13 @@ public class MainActivity extends ActionBarActivity {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+		
+		Intent intent = getIntent();
+		Bundle info = intent.getExtras();
+		if (info != null) { 
+			/* Retrieve vals with info.getBlah(...) */ 
+		} 
+
 	}
 	
 	private void setupNumberPickers() {
